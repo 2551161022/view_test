@@ -21,6 +21,7 @@ public class CheatRoomClent {
         //开启消息接收
         new Thread(new Channl(socket)).start();
 
+        System.out.println("输入消息并按回车发送,输入exit出,,,退出没有做从服务列表删除...哈哈哈");
         while(true){
             String msg = scanner.next();
             if("exit".equals(msg)){
