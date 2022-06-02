@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Test_Subject01 {
     public static void main(String[] args) throws IOException {
@@ -37,7 +39,7 @@ public class Test_Subject01 {
 //            }
 //        }
 
-        Arrays.stream(checkWords).filter(checkWord -> !wordsTree.search(checkWord)).forEach(System.out::println);
-
+        List<String> rstWords = Arrays.stream(checkWords).filter(wordsTree::search).collect(Collectors.toList());
+        rstWords.forEach(System.out::println);
     }
 }
