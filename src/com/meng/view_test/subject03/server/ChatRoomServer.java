@@ -62,7 +62,9 @@ public class ChatRoomServer {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                //断开连接移除服务
+                channls.removeIf(channl -> userName.equals(channl.userName));
+                System.out.println("user:" + userName + "disconnect this server");
             }
         }
     }
