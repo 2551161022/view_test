@@ -31,20 +31,21 @@ public class Test_Subject01 {
         }
 
 
+
         //需要检查的句子(没有加标点符号)
         String check = "hello yertoday";
         String[] checkWords = check.split(" ");
 
-        StringBuilder affterCheck = new StringBuilder();
+        StringBuilder afterCheck = new StringBuilder();
         for(String word:checkWords){
             if(wordsTree.search(word)){
-                affterCheck.append(word + " ");
+                afterCheck.append(word).append(" ");
             }else{
-                affterCheck.append(wordsTree.check(word) + " ");
+                afterCheck.append(wordsTree.check(word)).append(" ");
             }
         }
 
-        System.out.println(affterCheck);
+        System.out.println(afterCheck);
     }
 
 
