@@ -16,6 +16,9 @@ public class CheatRoomClent {
         Socket socket = new Socket("127.0.0.1",8888);
         DataOutputStream os = new DataOutputStream(socket.getOutputStream());
 
+        //设置用户名
+        String userName = "小明";
+        os.writeUTF("setUser:" + userName);
         Scanner scanner = new Scanner(System.in);
 
         //开启消息接收

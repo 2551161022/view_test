@@ -49,6 +49,9 @@ public class ChatRoomServer {
                 //发送就收到的信息
                 while(true){
                     String msg = is.readUTF();
+                    if(msg.startsWith("setUser:")){
+                        this.userName = msg.split(":")[1];
+                    }
                     msg = userName + ":" +msg;
                     System.out.println( msg);
 
