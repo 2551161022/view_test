@@ -17,7 +17,7 @@ public class CheatRoomClent {
         DataOutputStream os = new DataOutputStream(socket.getOutputStream());
 
         //设置用户名
-        String userName = "小明";
+        String userName = "小红";
         os.writeUTF("setUser:" + userName);
         Scanner scanner = new Scanner(System.in);
 

@@ -34,9 +34,10 @@ public class ChatRoomServer {
 
     static class Channl implements Runnable{
         String userName;
+        String userId;
         Socket clent;
-        Channl(Socket clent,String userName){
-            this.userName = userName;
+        Channl(Socket clent,String userId){
+            this.userId = userId;
             this.clent = clent;
         }
 
@@ -51,18 +52,20 @@ public class ChatRoomServer {
                     String msg = is.readUTF();
                     if(msg.startsWith("setUser:")){
                         this.userName = msg.split(":")[1];
-                    }
-                    msg = userName + ":" +msg;
-                    System.out.println( msg);
+                    }else{
+                        msg = userName + ":" +msg;
+                        System.out.println(msg);
 
-                    for(Channl channl:channls){
-                        if(!userName.equals(channl.userName)){
-                            OutputStream outputStream = channl.clent.getOutputStream();
-                            DataOutputStream os = new DataOutputStream(outputStream);
-                            os.writeUTF(msg);
-                            os.flush();
+                        for(Channl channl:channls){
+                            if(!userId.equals(channl.userId)){
+                                OutputStream outputStream = channl.clent.getOutputStream();
+                                DataOutputStream os = new DataOutputStream(outputStream);
+                                os.writeUTF(msg);
+                                os.flush();
+                            }
                         }
                     }
+
                 }
             } catch (IOException e) {
                 //断开连接移除服务
